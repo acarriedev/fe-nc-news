@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as api from "../utils/api";
 import ArticleBody from "./ArticleBody";
 import Loader from "./Loader";
+import CommentList from "./CommentList";
 
 class Article extends Component {
   state = {
@@ -14,6 +15,7 @@ class Article extends Component {
     return (
       <main>
         <ArticleBody {...this.state.article} />
+        <CommentList article_id={this.props.article_id} />
       </main>
     );
   }

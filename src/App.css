@@ -35,6 +35,10 @@ a {
   list-style: none;
 }
 
+.comment-list {
+  list-style: none;
+}
+
 #nav-avatar {
   width: 50px;
   height: 40px;
