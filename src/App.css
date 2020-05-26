@@ -1,3 +1,49 @@
 .App {
-  text-align: center;
+  display: grid;
+  background-color: rgba(250, 235, 215, 0.26);
+  color: rgba(0, 0, 0, 0.815);
+}
+
+a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.815);
+}
+
+.title {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: antiquewhite;
+}
+
+.title--header {
+  text-align: left;
+}
+
+.title--user {
+  text-align: end;
+}
+
+.title--user--item {
+  display: inline;
+}
+
+.nav-bar {
+  background-color: rgba(250, 235, 215, 0.493);
+}
+
+.article-list {
+  list-style: none;
+}
+
+#nav-avatar {
+  width: 50px;
+  height: 40px;
+  margin-top: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
 }
