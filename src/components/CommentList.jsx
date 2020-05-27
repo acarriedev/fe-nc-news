@@ -12,8 +12,9 @@ class CommentList extends Component {
 
   render() {
     const { article_id, user } = this.props;
+    const { isLoading, comments } = this.state;
 
-    if (this.state.isLoading) return <Loader />;
+    if (isLoading) return <Loader />;
     return (
       <main>
         <h5>Comments</h5>
@@ -23,7 +24,7 @@ class CommentList extends Component {
           addCommentToState={this.addCommentToState}
         />
         <ul className="comment-list">
-          {this.state.comments.map((comment) => {
+          {comments.map((comment) => {
             return (
               <li key={comment.comment_id}>
                 <CommentCard {...comment} />
@@ -40,7 +41,9 @@ class CommentList extends Component {
   }
 
   getComments = () => {
-    api.fetchComments(this.props.article_id).then((comments) => {
+    const { article_id } = this.props;
+
+    api.fetchComments(article_id).then((comments) => {
       this.setState({ comments, isLoading: false });
     });
   };

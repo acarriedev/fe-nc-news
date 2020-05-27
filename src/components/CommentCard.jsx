@@ -1,7 +1,6 @@
 import React from "react";
 
-const CommentCard = (props) => {
-  const { author, created_at, body, votes } = props;
+const CommentCard = ({ author, created_at, body, votes }) => {
   return (
     <main>
       <h6>

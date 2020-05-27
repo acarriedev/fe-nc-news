@@ -17,14 +17,16 @@ class App extends Component {
   };
 
   render() {
+    const { user } = this.state;
+
     return (
       <main className="App">
-        <Title user={this.state.user} />
+        <Title user={user} />
         <NavBar />
         <Router>
           <ArticleList path="/" />
           <ArticleList path="/:topic_slug" />
-          <Article path="/articles/:article_id" user={this.state.user} />
+          <Article path="/articles/:article_id" user={user} />
         </Router>
       </main>
     );

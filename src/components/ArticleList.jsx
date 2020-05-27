@@ -11,11 +11,13 @@ class ArticleList extends Component {
   };
 
   render() {
-    if (this.state.isLoading) return <Loader />;
+    const { isLoading, articles } = this.state;
+
+    if (isLoading) return <Loader />;
     return (
       <main>
         <ul className="article-list">
-          {this.state.articles.map((article) => {
+          {articles.map((article) => {
             return (
               <li key={article.article_id}>
                 <Link to={`/articles/${article.article_id}`}>
@@ -39,7 +41,9 @@ class ArticleList extends Component {
   }
 
   getArticles = () => {
-    api.fetchArticles(this.props.topic_slug).then((articles) => {
+    const { topic_slug } = this.props;
+
+    api.fetchArticles(topic_slug).then((articles) => {
       this.setState({ articles, isLoading: false });
     });
   };

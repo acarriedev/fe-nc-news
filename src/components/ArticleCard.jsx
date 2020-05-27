@@ -1,8 +1,13 @@
 import React from "react";
 
-const ArticleCard = (props) => {
-  const { title, votes, topic, author, created_at, comment_count } = props;
-
+const ArticleCard = ({
+  title,
+  votes,
+  topic,
+  author,
+  created_at,
+  comment_count,
+}) => {
   return (
     <article className="article-card">
       <h3>{title}</h3>

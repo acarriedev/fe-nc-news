@@ -6,7 +6,10 @@ class CommentForm extends Component {
     comment_body: "",
   };
   render() {
-    const { username, avatar_url } = this.props.user;
+    const {
+      user: { username, avatar_url },
+    } = this.props;
+    const { comment_body } = this.state;
 
     return (
       <form onSubmit={this.handleSubmitForm}>
@@ -16,7 +19,7 @@ class CommentForm extends Component {
           id="comment-box"
           name="comment_body"
           onChange={this.handleInputChange}
-          value={this.state.comment_body}
+          value={comment_body}
           rows="5"
           cols="50"
           placeholder="Write a comment..."
@@ -35,10 +38,15 @@ class CommentForm extends Component {
 
   handleSubmitForm = (event) => {
     event.preventDefault();
-    const { article_id, addCommentToState } = this.props;
+    const {
+      article_id,
+      addCommentToState,
+      user: { username },
+    } = this.props;
+    const { comment_body } = this.state;
     const newComment = {
-      username: this.props.user.username,
-      body: this.state.comment_body,
+      username: username,
+      body: comment_body,
     };
 
     api.postComment(article_id, newComment).then((comment) => {

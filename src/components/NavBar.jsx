@@ -6,6 +6,8 @@ class NavBar extends Component {
   state = { topics: [] };
 
   render() {
+    const { topics } = this.state;
+
     return (
       <nav className="nav-bar">
         <h5>Topics</h5>
@@ -13,7 +15,7 @@ class NavBar extends Component {
           <li>
             <Link to="/">all</Link>
           </li>
-          {this.state.topics.map(({ slug }) => {
+          {topics.map(({ slug }) => {
             return (
               <li key={slug}>
                 <Link to={`/${slug}`}>{slug}</Link>

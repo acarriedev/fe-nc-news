@@ -11,14 +11,14 @@ class Article extends Component {
   };
 
   render() {
-    if (this.state.isLoading) return <Loader />;
+    const { article_id, user } = this.props;
+    const { isLoading, article } = this.state;
+
+    if (isLoading) return <Loader />;
     return (
       <main>
-        <ArticleBody {...this.state.article} />
-        <CommentList
-          article_id={this.props.article_id}
-          user={this.props.user}
-        />
+        <ArticleBody {...article} />
+        <CommentList article_id={article_id} user={user} />
       </main>
     );
   }
@@ -28,7 +28,9 @@ class Article extends Component {
   }
 
   getArticleById = () => {
-    api.fetchArticleById(this.props.article_id).then((article) => {
+    const { article_id } = this.props;
+
+    api.fetchArticleById(article_id).then((article) => {
       this.setState({ article, isLoading: false });
     });
   };

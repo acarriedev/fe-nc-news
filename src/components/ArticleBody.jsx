@@ -1,7 +1,6 @@
 import React from "react";
 
-const ArticleBody = (props) => {
-  const { title, topic, body, author, created_at } = props;
+const ArticleBody = ({ title, topic, body, author, created_at }) => {
   return (
     <main>
       <h2>{title}</h2>
