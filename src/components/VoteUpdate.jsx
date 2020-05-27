@@ -36,7 +36,7 @@ class VoteUpdate extends Component {
   }
 
   handleVoteUpdate = (event) => {
-    const { article_id, itemToUpdate } = this.props;
+    const { id, itemToUpdate } = this.props;
     const { userVotes } = this.state;
     const vote = event.target.id;
     let increment = 0;
@@ -50,7 +50,7 @@ class VoteUpdate extends Component {
       };
     });
 
-    api.patchVotesById(itemToUpdate, article_id, increment).catch((err) => {
+    api.patchVotesById(itemToUpdate, id, increment).catch((err) => {
       this.setState(({ userVotes }) => {
         return { userVotes: userVotes - increment };
       });

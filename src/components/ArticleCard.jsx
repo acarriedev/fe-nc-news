@@ -16,11 +16,7 @@ const ArticleCard = ({
       <Link to={`/articles/${article_id}`}>
         <h3>{title}</h3>
       </Link>
-      <VoteUpdate
-        votes={votes}
-        article_id={article_id}
-        itemToUpdate="articles"
-      />
+      <VoteUpdate votes={votes} id={article_id} itemToUpdate="articles" />
       <p>Topic: {topic}</p>
       <p>
         Written by {author} at {created_at}

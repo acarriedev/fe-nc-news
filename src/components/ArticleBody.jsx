@@ -1,6 +1,15 @@
 import React from "react";
+import VoteUpdate from "./VoteUpdate";
 
-const ArticleBody = ({ title, topic, body, author, created_at }) => {
+const ArticleBody = ({
+  title,
+  topic,
+  body,
+  author,
+  created_at,
+  votes,
+  article_id,
+}) => {
   return (
     <main>
       <h2>{title}</h2>
@@ -9,6 +18,7 @@ const ArticleBody = ({ title, topic, body, author, created_at }) => {
       <p>
         Written by {author} at {created_at}
       </p>
+      <VoteUpdate votes={votes} id={article_id} itemToUpdate="articles" />
     </main>
   );
 };

@@ -40,11 +40,7 @@ export const postComment = (article_id, newComment) => {
 };
 
 export const patchVotesById = (itemToUpdate, id, increment) => {
-  return axios
-    .patch(`${baseURL}/${itemToUpdate}/${id}`, {
-      inc_votes: increment,
-    })
-    .then((response) => {
-      console.log(response);
-    });
+  return axios.patch(`${baseURL}/${itemToUpdate}/${id}`, {
+    inc_votes: increment,
+  });
 };
