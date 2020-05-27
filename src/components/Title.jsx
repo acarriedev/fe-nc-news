@@ -1,6 +1,6 @@
 import React from "react";
 
-const Title = ({ user: { username, avatar } }) => {
+const Title = ({ user: { username, avatar_url, name } }) => {
   return (
     <header className="title">
       <h1 className="title--header">NCNEWS</h1>
@@ -8,7 +8,7 @@ const Title = ({ user: { username, avatar } }) => {
       <section className="title--user">
         <h4 className="title--user--item">{username}</h4>
         <img
-          src={avatar}
+          src={avatar_url}
           alt="User avatar"
           className="title--user--item"
           id="nav-avatar"

@@ -10,7 +10,9 @@ class App extends Component {
   state = {
     user: {
       username: "jessjelly",
-      avatar: "https://image.flaticon.com/icons/svg/447/447748.svg",
+      avatar_url:
+        "https://vignette.wikia.nocookie.net/mrmen/images/4/4f/MR_JELLY_4A.jpg/revision/latest?cb=20180104121141",
+      name: "Jess Jelly",
     },
   };
 
@@ -22,7 +24,7 @@ class App extends Component {
         <Router>
           <ArticleList path="/" />
           <ArticleList path="/:topic_slug" />
-          <Article path="/articles/:article_id" />
+          <Article path="/articles/:article_id" user={this.state.user} />
         </Router>
       </main>
     );

@@ -15,7 +15,10 @@ class Article extends Component {
     return (
       <main>
         <ArticleBody {...this.state.article} />
-        <CommentList article_id={this.props.article_id} />
+        <CommentList
+          article_id={this.props.article_id}
+          user={this.props.user}
+        />
       </main>
     );
   }
