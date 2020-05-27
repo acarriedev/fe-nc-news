@@ -13,17 +13,20 @@ class ArticleList extends Component {
 
   render() {
     const { isLoading, articles } = this.state;
+    const { updateSortByInState } = this;
 
     if (isLoading) return <Loader />;
     return (
       <main>
-        <SortBar updateSortByInState={this.updateSortByInState} />
+        <SortBar updateSortByInState={updateSortByInState} />
         <ul className="article-list">
-          {articles.map((article) => {
+          {articles.map(({ article_id, ...article }) => {
             return (
-              <li key={article.article_id}>
-                <ArticleCard {...article} />
-              </li>
+              <ArticleCard
+                key={article_id}
+                article_id={article_id}
+                {...article}
+              />
             );
           })}
         </ul>
@@ -32,20 +35,25 @@ class ArticleList extends Component {
   }
 
   componentDidMount() {
-    this.getArticles();
+    const { topic_slug } = this.props;
+    const { sort_by } = this.state;
+    const { getArticles } = this;
+    getArticles(topic_slug, sort_by);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const topicSlugHasChanged = prevProps.topic_slug !== this.props.topic_slug;
-    const sortByHasChanged = prevState.sort_by !== this.state.sort_by;
-
-    if (topicSlugHasChanged || sortByHasChanged) this.getArticles();
-  }
-
-  getArticles = () => {
     const { topic_slug } = this.props;
     const { sort_by } = this.state;
+    const { getArticles } = this;
 
+    const topicSlugHasChanged = prevProps.topic_slug !== topic_slug;
+    const sortByHasChanged = prevState.sort_by !== sort_by;
+
+    if (topicSlugHasChanged || sortByHasChanged)
+      getArticles(topic_slug, sort_by);
+  }
+
+  getArticles = (topic_slug, sort_by) => {
     api.fetchArticles(topic_slug, sort_by).then((articles) => {
       this.setState({ articles, isLoading: false });
     });

@@ -24,12 +24,13 @@ class Article extends Component {
   }
 
   componentWillMount() {
-    this.getArticleById();
+    const { article_id } = this.props;
+    const { getArticleById } = this;
+
+    getArticleById(article_id);
   }
 
-  getArticleById = () => {
-    const { article_id } = this.props;
-
+  getArticleById = (article_id) => {
     api.fetchArticleById(article_id).then((article) => {
       this.setState({ article, isLoading: false });
     });

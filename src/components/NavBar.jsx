@@ -28,7 +28,8 @@ class NavBar extends Component {
   }
 
   componentDidMount() {
-    this.getTopics();
+    const { getTopics } = this;
+    getTopics();
   }
 
   getTopics = () => {

@@ -9,6 +9,7 @@ class VoteUpdate extends Component {
   render() {
     const { votes } = this.props;
     const { userVotes } = this.state;
+    const { handleVoteUpdate } = this;
 
     return (
       <section className="votes">
@@ -18,7 +19,7 @@ class VoteUpdate extends Component {
           role="img"
           aria-label="upvote"
           id="upvote"
-          onClick={this.handleVoteUpdate}
+          onClick={handleVoteUpdate}
         >
           ▲
         </span>
@@ -27,7 +28,7 @@ class VoteUpdate extends Component {
           role="img"
           aria-label="downvote"
           id="downvote"
-          onClick={this.handleVoteUpdate}
+          onClick={handleVoteUpdate}
         >
           ▼
         </span>

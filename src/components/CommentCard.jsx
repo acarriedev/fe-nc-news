@@ -2,9 +2,15 @@ import React from "react";
 import VoteUpdate from "./VoteUpdate";
 import CommentDeleter from "./CommentDeleter";
 
-const CommentCard = ({ comment, username, removeCommentFromState }) => {
-  const { author, created_at, body, votes, comment_id } = comment;
-
+const CommentCard = ({
+  author,
+  created_at,
+  body,
+  votes,
+  comment_id,
+  username,
+  removeCommentFromState,
+}) => {
   return (
     <main>
       <h6>

@@ -6,19 +6,18 @@ class CommentForm extends Component {
     comment_body: "",
   };
   render() {
-    const {
-      user: { username, avatar_url },
-    } = this.props;
+    const { username, avatar_url } = this.props;
     const { comment_body } = this.state;
+    const { handleSubmitForm, handleInputChange } = this;
 
     return (
-      <form onSubmit={this.handleSubmitForm}>
+      <form onSubmit={handleSubmitForm}>
         <h5>{username}</h5>
         <img src={avatar_url} alt="User avatar" id="nav-avatar" />
         <textarea
           id="comment-box"
           name="comment_body"
-          onChange={this.handleInputChange}
+          onChange={handleInputChange}
           value={comment_body}
           rows="5"
           cols="50"
