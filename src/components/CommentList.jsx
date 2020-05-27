@@ -27,7 +27,7 @@ class CommentList extends Component {
           {comments.map((comment) => {
             return (
               <li key={comment.comment_id}>
-                <CommentCard {...comment} />
+                <CommentCard {...comment} username={user.username} />
               </li>
             );
           })}

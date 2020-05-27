@@ -7,9 +7,9 @@ export const fetchTopics = () => {
   });
 };
 
-export const fetchArticles = (topic) => {
+export const fetchArticles = (topic, sort_by) => {
   return axios
-    .get(`${baseURL}/articles`, { params: { topic } })
+    .get(`${baseURL}/articles`, { params: { topic, sort_by } })
     .then(({ data: { articles } }) => {
       return articles;
     });
