@@ -44,3 +44,7 @@ export const patchVotesById = (itemToUpdate, id, increment) => {
     inc_votes: increment,
   });
 };
+
+export const deleteCommentById = (comment_id) => {
+  return axios.delete(`${baseURL}/comments/${comment_id}`);
+};

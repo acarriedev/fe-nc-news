@@ -27,7 +27,11 @@ class CommentList extends Component {
           {comments.map((comment) => {
             return (
               <li key={comment.comment_id}>
-                <CommentCard {...comment} username={user.username} />
+                <CommentCard
+                  comment={comment}
+                  username={user.username}
+                  removeCommentFromState={this.removeCommentFromState}
+                />
               </li>
             );
           })}
@@ -54,6 +58,16 @@ class CommentList extends Component {
         comments: [newComment, ...currentState.comments],
         isLoading: false,
       };
+    });
+  };
+
+  removeCommentFromState = (comment_id) => {
+    this.setState((currentState) => {
+      const remainingComments = currentState.comments.filter(
+        (comment) => comment.comment_id !== comment_id
+      );
+
+      return { comments: [...remainingComments], isLoading: false };
     });
   };
 }
