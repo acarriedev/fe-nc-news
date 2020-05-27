@@ -38,3 +38,13 @@ export const postComment = (article_id, newComment) => {
       return comment;
     });
 };
+
+export const patchVotesById = (itemToUpdate, id, increment) => {
+  return axios
+    .patch(`${baseURL}/${itemToUpdate}/${id}`, {
+      inc_votes: increment,
+    })
+    .then((response) => {
+      console.log(response);
+    });
+};

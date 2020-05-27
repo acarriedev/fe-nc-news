@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "@reach/router";
 import * as api from "../utils/api";
 import ArticleCard from "./ArticleCard";
 import Loader from "./Loader";
@@ -20,9 +19,7 @@ class ArticleList extends Component {
           {articles.map((article) => {
             return (
               <li key={article.article_id}>
-                <Link to={`/articles/${article.article_id}`}>
-                  <ArticleCard {...article} />
-                </Link>
+                <ArticleCard {...article} />
               </li>
             );
           })}
