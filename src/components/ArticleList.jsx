@@ -12,6 +12,7 @@ class ArticleList extends Component {
   };
 
   render() {
+    const { topic_slug } = this.props;
     const { isLoading, articles } = this.state;
     const { updateSortByInState } = this;
 
@@ -19,6 +20,7 @@ class ArticleList extends Component {
     return (
       <main>
         <SortBar updateSortByInState={updateSortByInState} />
+        <h4>Topic: {topic_slug || "all"}</h4>
         <ul className="article-list">
           {articles.map(({ article_id, ...article }) => {
             return (

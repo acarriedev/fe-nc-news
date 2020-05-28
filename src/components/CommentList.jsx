@@ -20,7 +20,7 @@ class CommentList extends Component {
 
     if (isLoading) return <Loader />;
     return (
-      <main>
+      <main id="comments-section">
         <h5>Comments</h5>
         <CommentForm
           article_id={article_id}

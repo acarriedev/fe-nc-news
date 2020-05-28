@@ -16,11 +16,17 @@ const ArticleCard = ({
       <Link to={`/articles/${article_id}`}>
         <h3>{title}</h3>
       </Link>
+
       <VoteUpdate votes={votes} id={article_id} itemToUpdate="articles" />
-      <p>Topic: {topic}</p>
+
+      <Link to={`/${topic}`}>
+        <p>Topic: {topic}</p>
+      </Link>
+
       <p>
         Written by {author} at {created_at}
       </p>
+
       <p>comments: {comment_count}</p>
     </article>
   );
