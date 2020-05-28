@@ -24,7 +24,7 @@ const ArticleCard = ({
       </Link>
 
       <p>
-        Written by {author} at {created_at}
+        Written by {author} at {Date(created_at).toString()}
       </p>
 
       <p>comments: {comment_count}</p>
