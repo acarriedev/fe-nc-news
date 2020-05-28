@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 import VoteUpdate from "./VoteUpdate";
+import { dateFormatter } from "../utils/utils";
 
 const ArticleCard = ({
   title,
@@ -11,6 +12,8 @@ const ArticleCard = ({
   comment_count,
   article_id,
 }) => {
+  const formattedDate = dateFormatter(created_at);
+
   return (
     <article className="article-card">
       <Link to={`/articles/${article_id}`}>
@@ -24,7 +27,7 @@ const ArticleCard = ({
       </Link>
 
       <p>
-        Written by {author} at {Date(created_at).toString()}
+        Written by {author} at {formattedDate}
       </p>
 
       <p>comments: {comment_count}</p>

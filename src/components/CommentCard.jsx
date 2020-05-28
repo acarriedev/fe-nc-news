@@ -1,6 +1,7 @@
 import React from "react";
 import VoteUpdate from "./VoteUpdate";
 import CommentDeleter from "./CommentDeleter";
+import { dateFormatter } from "../utils/utils";
 
 const CommentCard = ({
   author,
@@ -11,10 +12,12 @@ const CommentCard = ({
   username,
   removeCommentFromState,
 }) => {
+  const formattedDate = dateFormatter(created_at);
+
   return (
     <main>
       <h6>
-        {author} | {created_at}
+        {author} | {formattedDate}
       </h6>
       <article>{body}</article>
       <VoteUpdate votes={votes} id={comment_id} itemToUpdate="comments" />
