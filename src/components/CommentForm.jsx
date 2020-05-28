@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
-import ErrorDisplayer from "./ErrorDisplayer";
 
 class CommentForm extends Component {
   state = {

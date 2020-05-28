@@ -49,4 +49,5 @@ export const patchVotesById = async (itemToUpdate, id, increment) => {
 
 export const deleteCommentById = async (comment_id) => {
   const response = await request.delete(`/comments/${comment_id}`);
+  return response;
 };
