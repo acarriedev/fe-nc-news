@@ -21,7 +21,6 @@ class CommentForm extends Component {
           onChange={handleInputChange}
           value={comment_body}
           rows="5"
-          cols="50"
           placeholder="Write a comment..."
           required
         />

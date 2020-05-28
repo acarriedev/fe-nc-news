@@ -9,14 +9,29 @@ const SortBar = ({ updateSortByInState }) => {
   };
 
   return (
-    <nav>
-      <p onClick={handleSortClick} id="created_at">
+    <nav className="sort-bar">
+      <p
+        onClick={handleSortClick}
+        id="created_at"
+        tabIndex="0"
+        className="sort-button"
+      >
         Recent
       </p>
-      <p onClick={handleSortClick} id="votes">
+      <p
+        onClick={handleSortClick}
+        id="votes"
+        tabIndex="0"
+        className="sort-button"
+      >
         Top-Rated
       </p>
-      <p onClick={handleSortClick} id="comment_count">
+      <p
+        onClick={handleSortClick}
+        id="comment_count"
+        tabIndex="0"
+        className="sort-button"
+      >
         Most-Buzz
       </p>
     </nav>

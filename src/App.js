@@ -24,10 +24,14 @@ class App extends Component {
       <main className="App">
         <Title user={user} />
         <NavBar />
-        <Router>
+        <Router className="app-body">
           <ArticleList path="/" />
           <ArticleList path="/:topic_slug" />
-          <Article path="/articles/:article_id" user={user} />
+          <Article
+            path="/articles/:article_id"
+            user={user}
+            className="appBody"
+          />
           <ErrorDisplayer default />
         </Router>
       </main>

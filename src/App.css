@@ -1,7 +1,53 @@
+/* Fonts */
+@font-face {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: local("Raleway ExtraLight"), local("Raleway-ExtraLight"),
+    url(https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwOIpWqZPANqczVs.woff2)
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Raleway"), local("Raleway-Regular"),
+    url(https://fonts.gstatic.com/s/raleway/v14/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2)
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Raleway Bold"), local("Raleway-Bold"),
+    url(https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwJYtWqZPANqczVs.woff2)
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+body {
+  margin: 0;
+}
+
 .App {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   background-color: rgba(250, 235, 215, 0.26);
   color: rgba(0, 0, 0, 0.815);
+  font-family: "Raleway";
 }
 
 a {
@@ -9,10 +55,13 @@ a {
   color: rgba(0, 0, 0, 0.815);
 }
 
+/* Title */
 .title {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   background-color: antiquewhite;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
 }
 
 .title--header {
@@ -20,28 +69,14 @@ a {
 }
 
 .title--user {
-  text-align: end;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .title--user--item {
-  display: inline;
-}
-
-.nav-bar {
-  background-color: rgba(250, 235, 215, 0.493);
-}
-
-.article-list {
-  list-style: none;
-}
-
-.comment-list {
-  list-style: none;
-}
-
-.votes {
-  display: flex;
-  flex-direction: row;
+  margin: 5px;
 }
 
 #nav-avatar {
@@ -51,10 +86,59 @@ a {
   border: 1px solid rgba(0, 0, 0, 0.336);
   border-radius: 10px;
 }
+/* NavBar */
+
+.nav-bar {
+  background-color: rgba(250, 235, 215, 0.493);
+}
+
+/* Sort Bar */
+
+.sort-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 40px;
+}
+
+.sort-button {
+  background-color: rgba(223, 198, 166, 0.432);
+  color: rgba(0, 0, 0, 0.836);
+  height: 20px;
+  padding: 7px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 15px;
+  border: solid 1px rgba(223, 198, 166, 0.658);
+}
+
+/* ArticleList */
+
+.app-body {
+  padding: 1em;
+  padding-top: 0.25em;
+}
+
+.article-list {
+  list-style: none;
+  padding-inline-start: 0px;
+  border-top: 2px rgba(0, 0, 0, 0.212) solid;
+}
+
+.votes {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Comments */
+.comment-list {
+  list-style: none;
+}
 
 #comment-box {
   border: 1px solid rgba(0, 0, 0, 0.336);
   border-radius: 5px;
+  min-width: 290px;
 }
 
 #comment-button {
@@ -63,9 +147,9 @@ a {
   border-radius: 5px;
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .App {
     display: flex;
     flex-direction: column;
   }
-}
+} */
