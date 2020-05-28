@@ -5,6 +5,7 @@ import Title from "./components/Title";
 import NavBar from "./components/NavBar";
 import ArticleList from "./components/ArticleList";
 import Article from "./components/Article";
+import ErrorDisplayer from "./components/ErrorDisplayer";
 
 class App extends Component {
   state = {
@@ -27,6 +28,7 @@ class App extends Component {
           <ArticleList path="/" />
           <ArticleList path="/:topic_slug" />
           <Article path="/articles/:article_id" user={user} />
+          <ErrorDisplayer default />
         </Router>
       </main>
     );

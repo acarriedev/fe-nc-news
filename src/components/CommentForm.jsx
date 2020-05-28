@@ -22,6 +22,7 @@ class CommentForm extends Component {
           rows="5"
           cols="50"
           placeholder="Write a comment..."
+          required
         />
         <button id="comment-button">Comment</button>
       </form>
