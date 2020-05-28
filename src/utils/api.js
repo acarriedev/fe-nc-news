@@ -1,50 +1,52 @@
 import axios from "axios";
-const baseURL = "https://ac-nc-news.herokuapp.com/api";
+const request = axios.create({
+  baseURL: "https://ac-nc-news.herokuapp.com/api",
+});
 
-export const fetchTopics = () => {
-  return axios.get(`${baseURL}/topics`).then(({ data: { topics } }) => {
-    return topics;
-  });
+export const fetchTopics = async () => {
+  const {
+    data: { topics },
+  } = await request.get(`/topics`);
+  return topics;
 };
 
-export const fetchArticles = (topic, sort_by) => {
-  return axios
-    .get(`${baseURL}/articles`, { params: { topic, sort_by } })
-    .then(({ data: { articles } }) => {
-      return articles;
-    });
+export const fetchArticles = async (topic, sort_by) => {
+  const {
+    data: { articles },
+  } = await request.get(`/articles`, { params: { topic, sort_by } });
+  return articles;
 };
 
-export const fetchArticleById = (article_id) => {
-  return axios
-    .get(`${baseURL}/articles/${article_id}`)
-    .then(({ data: { article } }) => {
-      return article;
-    });
+export const fetchArticleById = async (article_id) => {
+  const {
+    data: { article },
+  } = await request.get(`/articles/${article_id}`);
+  return article;
 };
 
-export const fetchComments = (article_id) => {
-  return axios
-    .get(`${baseURL}/articles/${article_id}/comments`)
-    .then(({ data: { comments } }) => {
-      return comments;
-    });
+export const fetchComments = async (article_id) => {
+  const {
+    data: { comments },
+  } = await request.get(`/articles/${article_id}/comments`);
+  return comments;
 };
 
-export const postComment = (article_id, newComment) => {
-  return axios
-    .post(`${baseURL}/articles/${article_id}/comments`, newComment)
-    .then(({ data: { comment } }) => {
-      return comment;
-    });
+export const postComment = async (article_id, newComment) => {
+  const {
+    data: { comment },
+  } = await request.post(`/articles/${article_id}/comments`, newComment);
+  return comment;
 };
 
-export const patchVotesById = (itemToUpdate, id, increment) => {
-  return axios.patch(`${baseURL}/${itemToUpdate}/${id}`, {
+export const patchVotesById = async (itemToUpdate, id, increment) => {
+  const {
+    data: { article },
+  } = await request.patch(`/${itemToUpdate}/${id}`, {
     inc_votes: increment,
   });
+  return article;
 };
 
-export const deleteCommentById = (comment_id) => {
-  return axios.delete(`${baseURL}/comments/${comment_id}`);
+export const deleteCommentById = async (comment_id) => {
+  const response = await request.delete(`/comments/${comment_id}`);
 };

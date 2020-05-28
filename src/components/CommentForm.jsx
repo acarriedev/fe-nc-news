@@ -37,11 +37,7 @@ class CommentForm extends Component {
 
   handleSubmitForm = (event) => {
     event.preventDefault();
-    const {
-      article_id,
-      addCommentToState,
-      user: { username },
-    } = this.props;
+    const { article_id, addCommentToState, username } = this.props;
     const { comment_body } = this.state;
     const newComment = {
       username: username,

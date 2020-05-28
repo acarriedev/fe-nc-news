@@ -13,7 +13,7 @@ class CommentList extends Component {
   render() {
     const {
       article_id,
-      user: { username, ...user },
+      user: { username, avatar_url },
     } = this.props;
     const { isLoading, comments } = this.state;
     const { addCommentToState, removeCommentFromState } = this;
@@ -25,7 +25,7 @@ class CommentList extends Component {
         <CommentForm
           article_id={article_id}
           username={username}
-          {...user}
+          avatar_url={avatar_url}
           addCommentToState={addCommentToState}
         />
         <ul className="comment-list">
