@@ -3,20 +3,23 @@ import * as api from "../utils/api";
 import ArticleCard from "./ArticleCard";
 import Loader from "./Loader";
 import SortBar from "./SortBar";
+import ErrorDisplayer from "./ErrorDisplayer";
 
 class ArticleList extends Component {
   state = {
     articles: [],
     isLoading: true,
     sort_by: "created_at",
+    err: null,
   };
 
   render() {
     const { topic_slug } = this.props;
-    const { isLoading, articles } = this.state;
+    const { isLoading, articles, err } = this.state;
     const { updateSortByInState } = this;
 
     if (isLoading) return <Loader />;
+    if (err) return <ErrorDisplayer err={err} />;
     return (
       <main>
         <SortBar updateSortByInState={updateSortByInState} />
@@ -56,9 +59,21 @@ class ArticleList extends Component {
   }
 
   getArticles = (topic_slug, sort_by) => {
-    api.fetchArticles(topic_slug, sort_by).then((articles) => {
-      this.setState({ articles, isLoading: false });
-    });
+    api
+      .fetchArticles(topic_slug, sort_by)
+      .then((articles) => {
+        this.setState({ articles, isLoading: false });
+      })
+      .catch(
+        ({
+          response: {
+            status,
+            data: { msg },
+          },
+        }) => {
+          this.setState({ err: { status, msg }, isLoading: false });
+        }
+      );
   };
 
   updateSortByInState = (newSort) => {

@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import * as api from "../utils/api";
+import ErrorDisplayer from "./ErrorDisplayer";
 
 class NavBar extends Component {
-  state = { topics: [] };
+  state = { topics: [], err: null };
 
   render() {
-    const { topics } = this.state;
+    const { topics, err } = this.state;
 
+    if (err) return <ErrorDisplayer err={err} />;
     return (
       <nav className="nav-bar">
         <h5>Topics</h5>
@@ -33,9 +35,21 @@ class NavBar extends Component {
   }
 
   getTopics = () => {
-    api.fetchTopics().then((topics) => {
-      this.setState({ topics });
-    });
+    api
+      .fetchTopics()
+      .then((topics) => {
+        this.setState({ topics });
+      })
+      .catch(
+        ({
+          response: {
+            status,
+            data: { msg },
+          },
+        }) => {
+          this.setState({ err: { status, msg } });
+        }
+      );
   };
 }
 

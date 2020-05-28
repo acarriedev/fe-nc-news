@@ -4,11 +4,12 @@ import * as api from "../utils/api";
 class VoteUpdate extends Component {
   state = {
     userVotes: 0,
+    err: "",
   };
 
   render() {
     const { votes } = this.props;
-    const { userVotes } = this.state;
+    const { userVotes, err } = this.state;
     const { handleVoteUpdate } = this;
 
     return (
@@ -32,6 +33,7 @@ class VoteUpdate extends Component {
         >
           ▼
         </span>
+        {err && <p>{err}</p>}
       </section>
     );
   }
@@ -48,12 +50,13 @@ class VoteUpdate extends Component {
     this.setState(({ userVotes }) => {
       return {
         userVotes: userVotes + increment,
+        err: "",
       };
     });
 
     api.patchVotesById(itemToUpdate, id, increment).catch((err) => {
       this.setState(({ userVotes }) => {
-        return { userVotes: userVotes - increment };
+        return { userVotes: userVotes - increment, err: "1 vote per user" };
       });
     });
   };

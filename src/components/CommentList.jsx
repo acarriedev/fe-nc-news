@@ -3,11 +3,13 @@ import * as api from "../utils/api";
 import CommentCard from "./CommentCard";
 import Loader from "./Loader";
 import CommentForm from "./CommentForm";
+import ErrorDisplayer from "./ErrorDisplayer";
 
 class CommentList extends Component {
   state = {
     comments: [],
     isLoading: true,
+    err: null,
   };
 
   render() {
@@ -15,10 +17,11 @@ class CommentList extends Component {
       article_id,
       user: { username, avatar_url },
     } = this.props;
-    const { isLoading, comments } = this.state;
+    const { isLoading, comments, err } = this.state;
     const { addCommentToState, removeCommentFromState } = this;
 
     if (isLoading) return <Loader />;
+    if (err) return <ErrorDisplayer err={err} />;
     return (
       <main id="comments-section">
         <h5>Comments</h5>
@@ -53,9 +56,21 @@ class CommentList extends Component {
   }
 
   getComments = (article_id) => {
-    api.fetchComments(article_id).then((comments) => {
-      this.setState({ comments, isLoading: false });
-    });
+    api
+      .fetchComments(article_id)
+      .then((comments) => {
+        this.setState({ comments, isLoading: false });
+      })
+      .catch(
+        ({
+          response: {
+            status,
+            data: { msg },
+          },
+        }) => {
+          this.setState({ err: { status, msg }, isLoading: false });
+        }
+      );
   };
 
   addCommentToState = (newComment) => {

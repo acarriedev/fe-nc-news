@@ -3,18 +3,21 @@ import * as api from "../utils/api";
 import ArticleBody from "./ArticleBody";
 import Loader from "./Loader";
 import CommentList from "./CommentList";
+import ErrorDisplayer from "./ErrorDisplayer";
 
 class Article extends Component {
   state = {
     article: {},
     isLoading: true,
+    err: null,
   };
 
   render() {
     const { article_id, user } = this.props;
-    const { isLoading, article } = this.state;
+    const { isLoading, article, err } = this.state;
 
     if (isLoading) return <Loader />;
+    if (err) return <ErrorDisplayer err={err} />;
     return (
       <main>
         <ArticleBody {...article} />
@@ -31,9 +34,21 @@ class Article extends Component {
   }
 
   getArticleById = (article_id) => {
-    api.fetchArticleById(article_id).then((article) => {
-      this.setState({ article, isLoading: false });
-    });
+    api
+      .fetchArticleById(article_id)
+      .then((article) => {
+        this.setState({ article, isLoading: false });
+      })
+      .catch(
+        ({
+          response: {
+            status,
+            data: { msg },
+          },
+        }) => {
+          this.setState({ err: { status, msg }, isLoading: false });
+        }
+      );
   };
 }
 

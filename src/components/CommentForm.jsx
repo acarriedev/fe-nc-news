@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import ErrorDisplayer from "./ErrorDisplayer";
 
 class CommentForm extends Component {
   state = {
     comment_body: "",
+    err: null,
   };
   render() {
     const { username, avatar_url } = this.props;
-    const { comment_body } = this.state;
+    const { comment_body, err } = this.state;
     const { handleSubmitForm, handleInputChange } = this;
 
     return (
@@ -25,6 +27,7 @@ class CommentForm extends Component {
           required
         />
         <button id="comment-button">Comment</button>
+        {err && <p>{`${err.msg}`}</p>}
       </form>
     );
   }
@@ -44,12 +47,29 @@ class CommentForm extends Component {
       username: username,
       body: comment_body,
     };
+    const onlyWhiteSpace = /^[\t\r\n\s]*$/.test(comment_body);
 
-    api.postComment(article_id, newComment).then((comment) => {
-      addCommentToState(comment);
-    });
+    if (onlyWhiteSpace) {
+      this.setState({ comment_body: "", err: { msg: "Invalid Comment" } });
+    } else {
+      api
+        .postComment(article_id, newComment)
+        .then((comment) => {
+          addCommentToState(comment);
+        })
+        .catch(
+          ({
+            response: {
+              status,
+              data: { msg },
+            },
+          }) => {
+            this.setState({ err: { status, msg } });
+          }
+        );
 
-    this.setState({ comment_body: "" });
+      this.setState({ comment_body: "" });
+    }
   };
 }
 
