@@ -37,7 +37,9 @@ class CommentDeleter extends Component {
 
     return (
       <>
-        <button onClick={handleButtonClick}>delete comment</button>
+        <button onClick={handleButtonClick} className="comment-section-button">
+          delete comment
+        </button>
         {deletingComment && <p>Deleting...</p>}
         {err && <p>Error: {`${err.msg}`}</p>}
       </>

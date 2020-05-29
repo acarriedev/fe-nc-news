@@ -12,8 +12,8 @@ class NavBar extends Component {
     if (err) return <ErrorDisplayer err={err} />;
     return (
       <nav className="nav-bar">
-        <h5>Topics</h5>
-        <ul>
+        <h4 className="nav-bar-title">Topics</h4>
+        <ul className="nav-bar-list">
           <li>
             <Link to="/">all</Link>
           </li>

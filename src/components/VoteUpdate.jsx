@@ -14,7 +14,7 @@ class VoteUpdate extends Component {
 
     return (
       <section className="votes">
-        <p>votes: {votes + userVotes}</p>
+        <p className="vote-text">votes: {votes + userVotes}</p>
 
         <button
           onClick={

@@ -25,7 +25,7 @@ class CommentForm extends Component {
           placeholder="Write a comment..."
           required
         />
-        <button id="comment-button">Comment</button>
+        <button className="comment-section-button">Comment</button>
         {err && <p>Error: {`${err.msg}`}</p>}
         {postingComment && <p>Posting...</p>}
       </form>
@@ -59,17 +59,15 @@ class CommentForm extends Component {
           addCommentToState(comment);
           this.setState({ postingComment: false });
         })
-        .catch(
-          ({
-            response: {
-              status,
-              data: { msg },
+        .catch((err) => {
+          alert("couldnt add your message right now");
+          this.setState({
+            err: {
+              msg: "can't post right now",
             },
-          }) => {
-            console.log("Error!");
-            this.setState({ err: { status, msg }, postingComment: false });
-          }
-        );
+            postingComment: false,
+          });
+        });
 
       this.setState({ comment_body: "" });
     }

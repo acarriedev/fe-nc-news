@@ -15,19 +15,21 @@ const CommentCard = ({
   const formattedDate = dateFormatter(created_at);
 
   return (
-    <main>
+    <section className="comment-card">
       <h6>
         {author} | {formattedDate}
       </h6>
       <article>{body}</article>
-      <VoteUpdate votes={votes} id={comment_id} itemToUpdate="comments" />
-      {author === username && (
-        <CommentDeleter
-          comment_id={comment_id}
-          removeCommentFromState={removeCommentFromState}
-        />
-      )}
-    </main>
+      <div className="comment-card-interact">
+        <VoteUpdate votes={votes} id={comment_id} itemToUpdate="comments" />
+        {author === username && (
+          <CommentDeleter
+            comment_id={comment_id}
+            removeCommentFromState={removeCommentFromState}
+          />
+        )}
+      </div>
+    </section>
   );
 };
 

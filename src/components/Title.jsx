@@ -3,7 +3,7 @@ import React from "react";
 const Title = ({ user: { username, avatar_url, name } }) => {
   return (
     <header className="title">
-      <h1 className="title--header">NCNEWS</h1>
+      <h1 className="title--header">ncNEWS</h1>
 
       <section className="title--user">
         <h4 className="title--user--item">{username}</h4>

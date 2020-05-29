@@ -45,7 +45,7 @@ body {
 .App {
   display: flex;
   flex-direction: column;
-  background-color: rgba(250, 235, 215, 0.26);
+  background-color: rgb(245, 252, 250);
   color: rgba(0, 0, 0, 0.815);
   font-family: "Raleway";
 }
@@ -55,13 +55,36 @@ a {
   color: rgba(0, 0, 0, 0.815);
 }
 
+p {
+  color: rgba(0, 0, 0, 0.651);
+}
+
 /* Title */
+h1 {
+  color: rgba(16, 51, 49, 0.897);
+  background: linear-gradient(
+    110deg,
+    rgba(38, 114, 110, 0.664) 20%,
+    rgb(245, 252, 250) 35%
+  );
+  background-color: rgb(253, 250, 252);
+  padding: 3px;
+  border-radius: 7px;
+  margin-block-start: 0.25em;
+  margin-block-end: 0.25em;
+}
+
 .title {
-  background-color: antiquewhite;
+  background: linear-gradient(
+    110deg,
+    rgba(38, 114, 110, 0.664) 60%,
+    rgb(245, 252, 250) 60%
+  );
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 5px;
+  border-bottom: solid 3px rgb(237, 243, 243);
 }
 
 .title--header {
@@ -89,7 +112,21 @@ a {
 /* NavBar */
 
 .nav-bar {
-  background-color: rgba(250, 235, 215, 0.493);
+  background-color: rgba(76, 192, 167, 0.459);
+}
+
+.nav-bar-title {
+  text-align: center;
+  margin-block-start: 0.8em;
+  margin-block-end: 0.8em;
+}
+
+.nav-bar-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-inline-start: 0px;
+  list-style: none;
 }
 
 /* Sort Bar */
@@ -103,15 +140,15 @@ a {
 }
 
 .sort-button {
-  background-color: rgba(223, 198, 166, 0.432);
+  background-color: rgba(165, 235, 218, 0.39);
   color: rgba(0, 0, 0, 0.836);
   font-family: "Raleway";
   font-size: 12px;
   padding-top: 0px;
   padding-left: 12px;
   padding-right: 12px;
-  border-radius: 15px;
-  border: solid 1px rgba(223, 198, 166, 0.658);
+  border-radius: 7px;
+  border: solid 1px rgba(92, 165, 147, 0.527);
   place-self: center;
 }
 
@@ -120,12 +157,39 @@ a {
 .app-body {
   padding: 1em;
   padding-top: 0.25em;
+  max-width: 1000px;
 }
 
 .article-list {
   list-style: none;
   padding-inline-start: 0px;
-  border-top: 2px rgba(0, 0, 0, 0.212) solid;
+}
+
+/* Article Card */
+.article-card {
+  display: grid;
+  grid-template-columns: auto 120px;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "articleCardTitle articleCardVotes"
+    "articleCardInfo articleCardComments";
+  border-top: 2px rgba(57, 151, 128, 0.575) solid;
+}
+
+.article-card-title {
+  grid-area: articleCardTitle;
+}
+
+.article-card-votes {
+  grid-area: articleCardVotes;
+}
+
+.article-card-info {
+  grid-area: articleCardInfo;
+}
+
+.article-card-comments {
+  grid-area: articleCardComments;
 }
 
 /* Votes */
@@ -135,8 +199,11 @@ a {
   flex-direction: row;
 }
 
+.vote-text {
+  color: rgba(0, 0, 0, 0.527);
+}
+
 .vote-button {
-  /* background-color: rgba(255, 255, 255, 0); */
   color: rgba(41, 179, 179, 0.76);
   border: solid rgba(41, 179, 179, 0.315) 1px;
   border-radius: 15px;
@@ -146,7 +213,6 @@ a {
 
 .vote-button:disabled,
 .vote-button--disabled {
-  /* background-color: rgba(255, 255, 255, 0); */
   color: rgba(155, 155, 155, 0.589);
   border: solid rgba(0, 0, 0, 0.24) 1px;
   border-radius: 15px;
@@ -157,6 +223,16 @@ a {
 /* Comments */
 .comment-list {
   list-style: none;
+  padding-inline-start: 0px;
+}
+
+.comment-card {
+  border-top: 2px rgba(57, 151, 128, 0.575) solid;
+  max-width: 800px;
+}
+.comment-card-interact {
+  display: flex;
+  flex-direction: row;
 }
 
 #comment-box {
@@ -165,10 +241,18 @@ a {
   min-width: 290px;
 }
 
-#comment-button {
-  background-color: aliceblue;
-  border: 1px solid rgba(0, 0, 0, 0.336);
-  border-radius: 5px;
+.comment-section-button {
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.836);
+  font-family: "Raleway";
+  font-size: 12px;
+  padding-top: 0px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 7px;
+  border: solid 1px rgba(92, 165, 147, 0.527);
+  place-self: center;
+  margin: 4px;
 }
 
 /* @media only screen and (max-width: 600px) {
