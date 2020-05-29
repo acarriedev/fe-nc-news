@@ -5,39 +5,41 @@ class CommentForm extends Component {
   state = {
     comment_body: "",
     err: null,
+    postingComment: false,
   };
   render() {
     const { username, avatar_url } = this.props;
-    const { comment_body, err } = this.state;
-    const { handleSubmitForm, handleInputChange } = this;
+    const { comment_body, err, postingComment } = this.state;
+    const { handleSubmit, handleChange } = this;
 
     return (
-      <form onSubmit={handleSubmitForm}>
+      <form onSubmit={handleSubmit}>
         <h5>{username}</h5>
         <img src={avatar_url} alt="User avatar" id="nav-avatar" />
         <textarea
           id="comment-box"
           name="comment_body"
-          onChange={handleInputChange}
+          onChange={handleChange}
           value={comment_body}
           rows="5"
           placeholder="Write a comment..."
           required
         />
         <button id="comment-button">Comment</button>
-        {err && <p>{`${err.msg}`}</p>}
+        {err && <p>Error: {`${err.msg}`}</p>}
+        {postingComment && <p>Posting...</p>}
       </form>
     );
   }
 
-  handleInputChange = (event) => {
+  handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
   };
 
-  handleSubmitForm = (event) => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const { article_id, addCommentToState, username } = this.props;
     const { comment_body } = this.state;
@@ -50,10 +52,12 @@ class CommentForm extends Component {
     if (onlyWhiteSpace) {
       this.setState({ comment_body: "", err: { msg: "Invalid Comment" } });
     } else {
+      this.setState({ postingComment: true });
       api
         .postComment(article_id, newComment)
         .then((comment) => {
           addCommentToState(comment);
+          this.setState({ postingComment: false });
         })
         .catch(
           ({
@@ -62,7 +66,8 @@ class CommentForm extends Component {
               data: { msg },
             },
           }) => {
-            this.setState({ err: { status, msg } });
+            console.log("Error!");
+            this.setState({ err: { status, msg }, postingComment: false });
           }
         );
 

@@ -99,17 +99,20 @@ a {
   flex-direction: row;
   justify-content: space-around;
   height: 40px;
+  padding-top: 8px;
 }
 
 .sort-button {
   background-color: rgba(223, 198, 166, 0.432);
   color: rgba(0, 0, 0, 0.836);
-  height: 20px;
-  padding: 7px;
+  font-family: "Raleway";
+  font-size: 12px;
+  padding-top: 0px;
   padding-left: 12px;
   padding-right: 12px;
   border-radius: 15px;
   border: solid 1px rgba(223, 198, 166, 0.658);
+  place-self: center;
 }
 
 /* ArticleList */
@@ -125,9 +128,30 @@ a {
   border-top: 2px rgba(0, 0, 0, 0.212) solid;
 }
 
+/* Votes */
+
 .votes {
   display: flex;
   flex-direction: row;
+}
+
+.vote-button {
+  /* background-color: rgba(255, 255, 255, 0); */
+  color: rgba(41, 179, 179, 0.76);
+  border: solid rgba(41, 179, 179, 0.315) 1px;
+  border-radius: 15px;
+  height: 20px;
+  place-self: center;
+}
+
+.vote-button:disabled,
+.vote-button--disabled {
+  /* background-color: rgba(255, 255, 255, 0); */
+  color: rgba(155, 155, 155, 0.589);
+  border: solid rgba(0, 0, 0, 0.24) 1px;
+  border-radius: 15px;
+  height: 20px;
+  place-self: center;
 }
 
 /* Comments */

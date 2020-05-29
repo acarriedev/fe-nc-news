@@ -59,7 +59,7 @@ class CommentList extends Component {
     api
       .fetchComments(article_id)
       .then((comments) => {
-        this.setState({ comments, isLoading: false });
+        this.setState({ comments, isLoading: false, err: null });
       })
       .catch(
         ({
@@ -78,6 +78,7 @@ class CommentList extends Component {
       return {
         comments: [newComment, ...currentState.comments],
         isLoading: false,
+        err: null,
       };
     });
   };
@@ -88,7 +89,7 @@ class CommentList extends Component {
         (comment) => comment.comment_id !== comment_id
       );
 
-      return { comments: [...remainingComments], isLoading: false };
+      return { comments: [...remainingComments], isLoading: false, err: null };
     });
   };
 }

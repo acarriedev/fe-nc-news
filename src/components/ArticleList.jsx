@@ -16,13 +16,13 @@ class ArticleList extends Component {
   render() {
     const { topic_slug } = this.props;
     const { isLoading, articles, err } = this.state;
-    const { updateSortByInState } = this;
+    const { updateSortBy } = this;
 
     if (isLoading) return <Loader />;
     if (err) return <ErrorDisplayer err={err} />;
     return (
       <main>
-        <SortBar updateSortByInState={updateSortByInState} />
+        <SortBar updateSortBy={updateSortBy} />
         <h4>Topic: {topic_slug || "all"}</h4>
         <ul className="article-list">
           {articles.map(({ article_id, ...article }) => {
@@ -50,7 +50,6 @@ class ArticleList extends Component {
     const { topic_slug } = this.props;
     const { sort_by } = this.state;
     const { getArticles } = this;
-
     const topicSlugHasChanged = prevProps.topic_slug !== topic_slug;
     const sortByHasChanged = prevState.sort_by !== sort_by;
 
@@ -59,10 +58,11 @@ class ArticleList extends Component {
   }
 
   getArticles = (topic_slug, sort_by) => {
+    this.setState({ isLoading: true });
     api
       .fetchArticles(topic_slug, sort_by)
       .then((articles) => {
-        this.setState({ articles, isLoading: false });
+        this.setState({ articles, isLoading: false, err: null });
       })
       .catch(
         ({
@@ -76,7 +76,7 @@ class ArticleList extends Component {
       );
   };
 
-  updateSortByInState = (newSort) => {
+  updateSortBy = (newSort) => {
     this.setState(({ sort_by }) => {
       return {
         sort_by: newSort,

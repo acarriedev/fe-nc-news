@@ -16,32 +16,45 @@ class VoteUpdate extends Component {
       <section className="votes">
         <p>votes: {votes + userVotes}</p>
 
-        <span
-          role="img"
-          aria-label="upvote"
-          id="upvote"
-          onClick={handleVoteUpdate}
+        <button
+          onClick={
+            userVotes !== 1
+              ? () => {
+                  handleVoteUpdate("upvote");
+                }
+              : null
+          }
+          disabled={userVotes === 1}
+          className="vote-button"
         >
-          ▲
-        </span>
+          <span role="img" aria-label="upvote">
+            ▲
+          </span>
+        </button>
 
-        <span
-          role="img"
-          aria-label="downvote"
-          id="downvote"
-          onClick={handleVoteUpdate}
+        <button
+          onClick={
+            userVotes !== -1
+              ? () => {
+                  handleVoteUpdate("downvote");
+                }
+              : null
+          }
+          disabled={userVotes === -1}
+          className="vote-button"
         >
-          ▼
-        </span>
+          <span role="img" aria-label="downvote">
+            ▼
+          </span>
+        </button>
         {err && <p>{err}</p>}
       </section>
     );
   }
 
-  handleVoteUpdate = (event) => {
+  handleVoteUpdate = (vote) => {
     const { id, itemToUpdate } = this.props;
     const { userVotes } = this.state;
-    const vote = event.target.id;
     let increment = 0;
 
     if (vote === "upvote" && userVotes <= 0) increment++;

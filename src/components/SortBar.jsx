@@ -1,39 +1,38 @@
 import React from "react";
 
-const SortBar = ({ updateSortByInState }) => {
-  const handleSortClick = (event) => {
+const SortBar = ({ updateSortBy }) => {
+  const handleSortClick = (event, newSort) => {
     event.preventDefault();
-    const newSort = event.target.id;
 
-    updateSortByInState(newSort);
+    updateSortBy(newSort);
   };
 
   return (
     <nav className="sort-bar">
-      <p
-        onClick={handleSortClick}
-        id="created_at"
-        tabIndex="0"
+      <button
+        onClick={(event) => {
+          handleSortClick(event, "created_at");
+        }}
         className="sort-button"
       >
-        Recent
-      </p>
-      <p
-        onClick={handleSortClick}
-        id="votes"
-        tabIndex="0"
+        <p>Recent</p>
+      </button>
+      <button
+        onClick={(event) => {
+          handleSortClick(event, "votes");
+        }}
         className="sort-button"
       >
-        Top-Rated
-      </p>
-      <p
-        onClick={handleSortClick}
-        id="comment_count"
-        tabIndex="0"
+        <p>Top-Rated</p>
+      </button>
+      <button
+        onClick={(event) => {
+          handleSortClick(event, "comment_count");
+        }}
         className="sort-button"
       >
-        Most-Buzz
-      </p>
+        <p>Most-Buzz</p>
+      </button>
     </nav>
   );
 };
