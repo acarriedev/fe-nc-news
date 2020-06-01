@@ -47,7 +47,7 @@ body {
   flex-direction: column;
   background-color: rgb(245, 252, 250);
   color: rgba(0, 0, 0, 0.815);
-  font-family: "Raleway";
+  font-family: "Raleway", "Arial", sans-serif;
 }
 
 a {
