@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # dev
-README.md
+README-build.md
 netlify-deployment.md
 react-project-checklist.md
 backup.css
