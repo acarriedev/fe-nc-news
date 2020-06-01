@@ -3,7 +3,7 @@
 Welcome to the front-end app for Alex Carrie's ncNEWS, a demo news app created using my own api and data from Northcoders.
 The project has a default, logged-in user, jessjelly. This is used to post comments on the articles, which can be deleted.
 
-This project requires a basic understanding of react, node and axios.
+This project is a demonstration for the use of react, node and axios to create a simple, responsive App.
 
 Node v13.11.0 is the minimum version required to run this app.
 
@@ -15,32 +15,17 @@ Node v13.11.0 is the minimum version required to run this app.
 
 ---
 
-## Step 1 - Setting up your own repository
+## Setting up the project
 
-Fork this repo
-
-Clone this repo:
+### Step 1 - Install dependencies
 
 ```bash
-git clone https://github.com/scrymgeourg/fe-nc-news
-
-cd fe-nc-news
+npm i
 ```
 
 ---
 
-## Step 2 - Install dependencies
-
-```bash
-npm install
-
-npm install axios
-
-```
-
----
-
-## Step 3 - Run App in the browser
+### Step 2 - Run App in the browser
 
 ```bash
 npm start

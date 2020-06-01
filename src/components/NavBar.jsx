@@ -14,12 +14,12 @@ class NavBar extends Component {
       <nav className="app-nav">
         <h4 className="nav-bar-title">Topics</h4>
         <ul className="nav-bar-list">
-          <li>
+          <li className="nav-list-item">
             <Link to="/">all</Link>
           </li>
           {topics.map(({ slug }) => {
             return (
-              <li key={slug}>
+              <li key={slug} className="nav-list-item">
                 <Link to={`/${slug}`}>{slug}</Link>
               </li>
             );
