@@ -1,7 +1,7 @@
 import React from "react";
 
 const Loader = () => {
-  return <main>...Loading</main>;
+  return <section className="loader"></section>;
 };
 
 export default Loader;
