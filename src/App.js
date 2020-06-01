@@ -22,8 +22,8 @@ class App extends Component {
 
     return (
       <main className="App">
-        <Title user={user} />
-        <NavBar />
+        <Title user={user} className="app-title" />
+        <NavBar className="app-nav" />
         <Router className="app-body">
           <ArticleList path="/" />
           <ArticleList path="/:topic_slug" />

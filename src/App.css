@@ -111,7 +111,7 @@ h1 {
 }
 /* NavBar */
 
-.nav-bar {
+.app-nav {
   background-color: rgba(76, 192, 167, 0.459);
 }
 
@@ -235,15 +235,38 @@ h1 {
   flex-direction: row;
 }
 
-#comment-box {
-  border: 1px solid rgba(0, 0, 0, 0.336);
+/* Comment Form */
+
+.comment-form-container {
+  display: grid;
+  grid-template-columns: 60px 1fr 1fr;
+  grid-template-rows: 1fr 1fr 23px;
+  grid-template-areas:
+    "commentUsername commentBox commentBox"
+    "commentUserAvatar commentBox commentBox"
+    "empty empty commentButton";
+  max-width: 800px;
+}
+
+.comment-username {
+  grid-area: commentUsername;
+}
+
+.comment-avatar {
+  grid-area: commentUserAvatar;
+}
+
+.comment-box {
+  border: 1px solid rgba(92, 165, 147, 0.527);
   border-radius: 5px;
-  min-width: 290px;
+  min-width: 270px;
+  font-family: "Raleway";
+  grid-area: commentBox;
 }
 
 .comment-section-button {
   background-color: rgb(255, 255, 255);
-  color: rgba(0, 0, 0, 0.836);
+  color: rgba(0, 0, 0, 0.699);
   font-family: "Raleway";
   font-size: 12px;
   padding-top: 0px;
@@ -251,13 +274,60 @@ h1 {
   padding-right: 12px;
   border-radius: 7px;
   border: solid 1px rgba(92, 165, 147, 0.527);
-  place-self: center;
+  width: 100px;
   margin: 4px;
+  justify-self: right;
+  grid-area: commentButton;
 }
 
-/* @media only screen and (max-width: 600px) {
+.delete-button {
+  background-color: rgb(255, 255, 255);
+  color: rgba(0, 0, 0, 0.699);
+  font-family: "Raleway";
+  font-size: 12px;
+  padding-top: 0px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 7px;
+  border: solid 1px rgba(92, 165, 147, 0.527);
+  margin: 4px;
+  justify-self: right;
+  place-self: center;
+}
+
+/* For Desktop & larger screens */
+
+@media only screen and (min-width: 600px) {
   .App {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "appTitle appTitle"
+      "appNav appBody";
+  }
+
+  .app-title {
+    grid-area: appTitle;
+  }
+
+  .title {
+    grid-area: appTitle;
+  }
+
+  .app-nav {
+    grid-area: appNav;
+  }
+
+  .nav-bar-list {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    padding-inline-start: 0px;
+    list-style: none;
   }
-} */
+
+  .app-body {
+    grid-area: appBody;
+  }
+}

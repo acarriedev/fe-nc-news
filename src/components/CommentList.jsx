@@ -23,8 +23,8 @@ class CommentList extends Component {
     if (isLoading) return <Loader />;
     if (err) return <ErrorDisplayer err={err} />;
     return (
-      <main id="comments-section">
-        <h5>Comments</h5>
+      <section id="comments-section">
+        <h4>Comments</h4>
         <CommentForm
           article_id={article_id}
           username={username}
@@ -45,7 +45,7 @@ class CommentList extends Component {
             );
           })}
         </ul>
-      </main>
+      </section>
     );
   }
 

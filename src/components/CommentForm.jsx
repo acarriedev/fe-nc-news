@@ -13,11 +13,16 @@ class CommentForm extends Component {
     const { handleSubmit, handleChange } = this;
 
     return (
-      <form onSubmit={handleSubmit}>
-        <h5>{username}</h5>
-        <img src={avatar_url} alt="User avatar" id="nav-avatar" />
+      <form onSubmit={handleSubmit} className="comment-form-container">
+        <h5 className="comment-username">{username}</h5>
+        <img
+          src={avatar_url}
+          alt="User avatar"
+          id="nav-avatar"
+          className="comment-avatar"
+        />
         <textarea
-          id="comment-box"
+          className="comment-box"
           name="comment_body"
           onChange={handleChange}
           value={comment_body}
