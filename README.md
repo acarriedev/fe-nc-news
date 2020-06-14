@@ -11,7 +11,7 @@ Node v13.11.0 is the minimum version required to run this app.
 
 - [Alex Carrie ncNEWS App](https://alex-carrie-nc-news.netlify.app/)
 - [API for project](https://ac-nc-news.herokuapp.com/api)
-- [Git repo for API](https://github.com/scrymgeourg/be-nc-news)
+- [Git repo for API](https://github.com/acarriedev/be-nc-news)
 
 ---
 
@@ -35,7 +35,7 @@ npm start
 
 ## Tests
 
-Most of the testing and errors-handling for this project is handled by the [back-end](https://github.com/scrymgeourg/be-nc-news).
+Most of the testing and errors-handling for this project is handled by the [back-end](https://github.com/acarriedev/be-nc-news).
 There is a tests folder containing tests for the dateFormatter utils function. This uses jest, which is installed with react.
 
 To run this test enter this in the terminal
@@ -54,7 +54,7 @@ Jest will automatically run in watch mode. To escape watch mode enter this in th
 
 ## Author
 
-- Alex Carrie - [github](https://github.com/scrymgeourg/)
+- Alex Carrie - [github](https://github.com/acarriedev/)
 
 ---
 
